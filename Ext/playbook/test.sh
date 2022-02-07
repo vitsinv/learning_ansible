@@ -1,6 +1,6 @@
 #!/bin/bash
 
-hlist_dc=$(docker ps -aq)
+list_dc=$(docker ps -aq)
 for start in $list_dc 
 do
 docker start $start
