@@ -37,8 +37,7 @@ A    playbook/inventory/prod.yml
 A    playbook/inventory/test.yml
 A    playbook/site.yml
 Exported revision 124.
-14:20:35 vitsin@FinDir:/mnt/c/Users/vitsin/learning_ansible$ ls
-playbook
+
 ```
 </ol>
 </a>Основная часть</h2>
