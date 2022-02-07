@@ -405,7 +405,7 @@ ubuntu                     : ok=3    changed=0    unreachable=0    failed=0    s
 ```
 <li>Напишите скрипт на bash: автоматизируйте поднятие необходимых контейнеров, запуск ansible-playbook и остановку контейнеров.</li>
 
-- <a href=>test.sh</a>
+- <a href="https://github.com/vitsinv/learning_ansible/blob/master/Ext/playbook/test.sh">test.sh</a>
 
 ```
 #!/bin/bash
