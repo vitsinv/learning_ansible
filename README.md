@@ -278,10 +278,150 @@ ubuntu                     : ok=3    changed=0    unreachable=0    failed=0    s
 <h2 dir="auto"><a id="user-content-необязательная-часть" class="anchor" aria-hidden="true" href="#необязательная-часть"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Необязательная часть</h2>
 <ol dir="auto">
 <li>При помощи <code>ansible-vault</code> расшифруйте все зашифрованные файлы с переменными.</li>
-<li>Зашифруйте отдельное значение <code>PaSSw0rd</code> для переменной <code>some_fact</code> паролем <code>netology</code>. Добавьте полученное значение в <code>group_vars/all/exmp.yml</code>.</li>
+
+```
+$ ansible-vault decrypt group_vars/el/examp.yml
+Vault password:
+Decryption successful
+$ ansible-vault decrypt group_vars/deb/examp.yml
+Vault password:
+Decryption successful
+```
+<li>Зашифруйте отдельное значение <code>PaSSw0rd</code> для переменной <code>some_fact</code> паролем <code>netology</code>. Добавьте полученное значение в <code>group_vars/all/examp.yml</code>.</li>
+
+```
+$ ansible-vault encrypt_string PaSSw0rd --ask-vault-pass
+New Vault password:
+Confirm New Vault password:
+!vault |
+          $ANSIBLE_VAULT;1.1;AES256
+          35326132633761326131343464343438343232336237306239633732313162356666323064343738
+          3336316261613862393266633037386333373865303063360a383363313232363866313337386661
+          61333761356130643863393031333564636163333762363334636134643965366261393037643630
+          6436323463343639360a386161646164666434333034336333313638613366366230636338393133
+          3838
+Encryption successful
+```
+
+```
+$ cat group_vars/all/examp.yml
+---
+  some_fact: !vault |
+          $ANSIBLE_VAULT;1.1;AES256
+          35326132633761326131343464343438343232336237306239633732313162356666323064343738
+          3336316261613862393266633037386333373865303063360a383363313232363866313337386661
+          61333761356130643863393031333564636163333762363334636134643965366261393037643630
+          6436323463343639360a386161646164666434333034336333313638613366366230636338393133
+          3838
+```
 <li>Запустите <code>playbook</code>, убедитесь, что для нужных хостов применился новый <code>fact</code>.</li>
+
+```
+$ ansible-playbook -i inventory/prod.yml site.yml --ask-vault-pass
+Vault password:
+
+PLAY [Print os facts] **************************************************************************************************
+
+TASK [Gathering Facts] *************************************************************************************************
+ok: [localhost]
+ok: [ubuntu]
+ok: [centos7]
+
+TASK [Print OS] ********************************************************************************************************
+ok: [localhost] => {
+    "msg": "Ubuntu"
+}
+ok: [centos7] => {
+    "msg": "CentOS"
+}
+ok: [ubuntu] => {
+    "msg": "Ubuntu"
+}
+
+TASK [Print fact] ******************************************************************************************************
+ok: [localhost] => {
+    "msg": "PaSSw0rd"
+}
+ok: [centos7] => {
+    "msg": "el default fact"
+}
+ok: [ubuntu] => {
+    "msg": "deb default fact"
+}
+
+PLAY RECAP *************************************************************************************************************
+centos7                    : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+localhost                  : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+ubuntu                     : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+```
 <li>Добавьте новую группу хостов <code>fedora</code>, самостоятельно придумайте для неё переменную. В качестве образа можно использовать <a href="https://hub.docker.com/r/pycontribs/fedora" rel="nofollow">этот</a>.</li>
+
+```
+$ ansible-playbook -i inventory/prod.yml site.yml --ask-vault-pass
+Vault password:
+[WARNING]: Found both group and host with same name: fedora
+
+PLAY [Print os facts] **************************************************************************************************
+
+TASK [Gathering Facts] *************************************************************************************************
+ok: [localhost]
+ok: [fedora]
+ok: [ubuntu]
+ok: [centos7]
+
+TASK [Print OS] ********************************************************************************************************
+ok: [localhost] => {
+    "msg": "Ubuntu"
+}
+ok: [fedora] => {
+    "msg": "Ubuntu"
+}
+ok: [centos7] => {
+    "msg": "CentOS"
+}
+ok: [ubuntu] => {
+    "msg": "Ubuntu"
+}
+
+TASK [Print fact] ******************************************************************************************************
+ok: [localhost] => {
+    "msg": "PaSSw0rd"
+}
+ok: [fedora] => {
+    "msg": "fedora - sux"
+}
+ok: [centos7] => {
+    "msg": "el default fact"
+}
+ok: [ubuntu] => {
+    "msg": "deb default fact"
+}
+
+PLAY RECAP *************************************************************************************************************
+centos7                    : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+fedora                     : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+localhost                  : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+ubuntu                     : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+```
 <li>Напишите скрипт на bash: автоматизируйте поднятие необходимых контейнеров, запуск ansible-playbook и остановку контейнеров.</li>
+
+- <a href=>test.sh</a>
+
+```
+#!/bin/bash
+
+list_dc=$(docker ps -aq)
+for start in $list_dc
+do
+docker start $start
+done
+ansible-playbook -i inventory/prod.yml site.yml --ask-vault-pass
+for stop in $list_dc
+do
+docker stop $stop
+done
+```
+
 <li>Все изменения должны быть зафиксированы и отправлены в вашей личный репозиторий.</li>
 </ol>
 <hr>
