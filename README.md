@@ -1,5 +1,5 @@
-<H1><a>Домашнее задание к занятию "08.01 Введение в Ansible"</a>
-<H2><a>Подготовка к выполнению</a>
+<H1><a>Домашнее задание к занятию "08.01 Введение в Ansible"</a></H1>
+<H2><a>Подготовка к выполнению</a></H2>
 
 <li>Установите ansible версии 2.10 или выше.</li>
 
@@ -273,6 +273,7 @@ ubuntu                     : ok=3    changed=0    unreachable=0    failed=0    s
 ```
 
 <li>Заполните <code>README.md</code> ответами на вопросы. Сделайте <code>git push</code> в ветку <code>master</code>. В ответе отправьте ссылку на ваш открытый репозиторий с изменённым <code>playbook</code> и заполненным <code>README.md</code>.</li>
+<a href="https://github.com/vitsinv/learning_ansible/blob/master/%D0%9E%D0%B1%D1%8F%D0%B7%D0%B0%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D0%BE%D0%B5/playbook/README.md">README.MD<a>
 </ol>
 <h2 dir="auto"><a id="user-content-необязательная-часть" class="anchor" aria-hidden="true" href="#необязательная-часть"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Необязательная часть</h2>
 <ol dir="auto">
