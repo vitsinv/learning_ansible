@@ -403,12 +403,8 @@ elastic                    : ok=9    changed=0    unreachable=0    failed=0    s
 kibana                     : ok=9    changed=0    unreachable=0    failed=0    skipped=2    rescued=0    ignored=0
 ```
 9. Подготовьте README.md файл по своему playbook. В нём должно быть описано: что делает playbook, какие у него есть параметры и теги.
+<a href="https://github.com/vitsinv/learning_ansible/tree/master/8.2_playbook/playbook#readme">README.MD</a>
 10. Готовый playbook выложите в свой репозиторий, в ответ предоставьте ссылку на него.
-
----
-
-### Как оформить ДЗ?
-
-Выполненное домашнее задание пришлите ссылкой на .md-файл в вашем репозитории.
+<a href="https://github.com/vitsinv/learning_ansible/blob/master/8.2_playbook/playbook/site.yml">Плейбук</a>
 
 ---
