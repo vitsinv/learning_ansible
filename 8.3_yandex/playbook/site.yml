@@ -1,0 +1,145 @@
+---
+- name: Install Java
+  hosts: all
+  tasks:
+    - name: Set facts for Java 11 vars
+      set_fact:
+        java_home: "/opt/jdk/{{ java_jdk_version }}"
+      tags: java
+    - name: Upload .tar.gz file containing binaries from local storage
+      copy:
+        src: "{{ java_oracle_jdk_package }}"
+        dest: "/tmp/jdk-{{ java_jdk_version }}.tar.gz"
+      register: download_java_binaries
+      until: download_java_binaries is succeeded
+      tags: java
+    - name: Ensure installation dir exists
+      file:
+        state: directory
+        path: "{{ java_home }}"
+      tags: java
+    - name: Extract java in the installation directory
+      unarchive:
+        copy: false
+        src: "/tmp/jdk-{{ java_jdk_version }}.tar.gz"
+        dest: "{{ java_home }}"
+        extra_opts: [--strip-components=1]
+        creates: "{{ java_home }}/bin/java"
+      tags:
+        - java
+    - name: Export environment variables
+      template:
+        src: jdk.sh.j2
+        dest: /etc/profile.d/jdk.sh
+      tags: java
+- name: Install Elasticsearch
+  hosts: elasticsearch
+  handlers:
+    - name: restart Elasticsearch
+      become: true
+      service:
+        name: elasticsearch
+        state: restarted
+  tasks:
+    - name: install elasticsearch rpm key
+      rpm_key: key=https://artifacts.elastic.co/GPG-KEY-elasticsearch state=present
+    - name: install elasticsearch 7.x rpm repository
+      yum_repository:
+        name: elasticsearch-7.x
+        state: present
+        description: "Elasticsearch repository for 7.x packages"
+        baseurl: https://artifacts.elastic.co/packages/7.x/yum
+        gpgcheck: true
+        gpgkey: https://artifacts.elastic.co/GPG-KEY-elasticsearch'
+      register: yum_repository_output
+    - name: Download Elasticsearch's rpm
+      get_url:
+        url: "https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-{{ elk_stack_version }}-x86_64.rpm"
+        dest: "/tmp/elasticsearch-{{ elk_stack_version }}-x86_64.rpm"
+      register: download_elastic
+      until: download_elastic is succeeded
+    - name: Install Elasticsearch
+      become: true
+      yum:
+        name: "/tmp/elasticsearch-{{ elk_stack_version }}-x86_64.rpm"
+        state: present
+    - name: Configure Elasticsearch
+      become: true
+      template:
+        src: elasticsearch.yml.j2
+        dest: /etc/elasticsearch/elasticsearch.yml
+      notify: restart Elasticsearch
+- name: Install Kibana
+  hosts: kibana
+  handlers:
+    - name: restart Kibana
+      become: true
+      service:
+        name: kibana
+        state: restarted
+  tasks:
+    - name : install kibana rpm key
+      rpm_key: key=https://artifacts.elastic.co/GPG-KEY-elasticsearch state=present
+    - name: install kibana 7.x rpm repository
+      yum_repository:
+        name: elasticsearch-7.x
+        state: present
+        description: "Elasticsearch repository for 7.x packages"
+        baseurl: https://artifacts.elastic.co/packages/7.x/yum
+        gpgcheck: true
+        gpgkey: https://artifacts.elastic.co/GPG-KEY-elasticsearch'
+      register: yum_repository_output
+    - name: "Download Kibana's rpm"
+      get_url:
+        url: "https://artifacts.elastic.co/downloads/kibana/kibana-{{ elk_stack_version }}-x86_64.rpm"
+        dest: "/tmp/kibana-{{ elk_stack_version }}-x86_64.rpm"
+      register: download_kibana
+      until: download_kibana is succeeded
+    - name: Install Kibana
+      become: true
+      yum:
+        name: "/tmp/kibana-{{ elk_stack_version }}-x86_64.rpm"
+        state: present
+    - name: Configure Kibana
+      become: true
+      template:
+        src: kibana.yml.j2
+        dest: /etc/kibana/kibana.yml
+      notify: restart Kibana
+- name: Install Filebeat
+  hosts: filebeat
+  handlers:
+    - name: restart Filebeat
+      become: true
+      service:
+        name: filebeat
+        state: restarted
+  tasks:
+    - name : install elastic rpm key
+      rpm_key: key=https://artifacts.elastic.co/GPG-KEY-elasticsearch state=present
+    - name: install filebeat 7.x rpm repository
+      yum_repository:
+        name: elasticsearch-7.x
+        state: present
+        description: "Elasticsearch repository for 7.x packages"
+        baseurl: https://artifacts.elastic.co/packages/7.x/yum
+        gpgcheck: true
+        gpgkey: https://artifacts.elastic.co/GPG-KEY-elasticsearch'
+      register: yum_repository_output
+    - name: "Download filebeat's rpm"
+      get_url:
+        url: "https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{ elk_stack_version }}-x86_64.rpm"
+        dest: "/tmp/filebeat-{{ elk_stack_version }}-x86_64.rpm"
+      register: download_filebeat
+      until: download_filebeat is succeeded
+    - name: Install Filebeat
+      become: true
+      yum:
+        name: "/tmp/filebeat-{{ elk_stack_version }}-x86_64.rpm"
+        state: present
+    - name: Configure Filebeat
+      become: true
+      template:
+        src: filebeat.yml.j2
+        dest: /etc/filebeat/filebeat.yml
+      notify: restart Filebeat

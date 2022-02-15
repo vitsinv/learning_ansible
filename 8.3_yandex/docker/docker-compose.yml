@@ -1,0 +1,18 @@
+version: "3.1"
+services:
+  elastic:
+    image: ubuntu
+    container_name: elastic
+#    RUN: /bin/bash
+#    ports:
+#      - "22:22"
+  kibana:
+    image: ubuntu
+    container_name: kibana
+#    ports:
+#      - "22:22"
+  filebeat:
+    image: ubuntu
+    container_name: filebeat
+#    ports:
+#      - "22:22"

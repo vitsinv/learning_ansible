@@ -1,0 +1,23 @@
+---
+all:
+  hosts:
+    el-instance:
+      ansible_host: "{{ elastic_ip }}"
+    ki-instance:
+      ansible_host: "{{ kibana_ip }}"
+    fb-instance: 
+      ansible_host: "{{ filebeat_ip }}"
+    
+  vars:
+    ansible_connection: ssh
+    ansible_user: root
+    ansible_password: GetOff100
+elasticsearch:
+  hosts:
+    el-instance:
+kibana:
+  hosts:
+    ki-instance:
+filebeat:
+  hosts:
+    fb-instance:
