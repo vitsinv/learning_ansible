@@ -403,5 +403,9 @@ fb-instance                : ok=12   changed=4    unreachable=0    failed=0    s
 ki-instance                : ok=11   changed=0    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0
 ```
 <li>Подготовьте README.md файл по своему playbook. В нём должно быть описано: что делает playbook, какие у него есть параметры и теги.</li>
+
+<a href="https://github.com/vitsinv/learning_ansible/blob/master/8.3_yandex/playbook/README.md"> README  с описанием плейбука</a>
 <li>Готовый playbook выложите в свой репозиторий, в ответ предоставьте ссылку на него.</li>
+
+<a href="https://github.com/vitsinv/learning_ansible/blob/master/8.3_yandex/playbook/site.yml">Сам плейбук</a>
 </ol>
