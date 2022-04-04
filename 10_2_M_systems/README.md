@@ -120,7 +120,7 @@ $ curl http://localhost:9092/kapacitor/v1/ping -v
 
 <p dir="auto">А также скриншот веб-интерфейса ПО chronograf (<code>http://localhost:8888</code>).</p>
 
-- Сюда вставить /images/chronograf/jpg
+<a href="https://github.com/vitsinv/learning_ansible/blob/master/10_2_M_systems/images/chronograf.JPG">Скриншот Chronograf</a>
 
 <p dir="auto">P.S.: если при запуске некоторые контейнеры будут падать с ошибкой - проставьте им режим <code>Z</code>, например
 <code>./data:/var/lib:Z</code></p>
@@ -140,7 +140,7 @@ $ curl http://localhost:9092/kapacitor/v1/ping -v
 <p dir="auto">Для выполнения задания приведите скриншот с отображением метрик утилизации места на диске
 (disk-&gt;host-&gt;telegraf_container_id) из веб-интерфейса.</p>
 <ol start="5" dir="auto">
-- Вставить /images/disk.jpg
+<a href="https://github.com/vitsinv/learning_ansible/blob/master/10_2_M_systems/images/disk.JPG">Метрики disk</a>
 
 <li>Изучите список <a href="https://github.com/influxdata/telegraf/tree/master/plugins/inputs">telegraf inputs</a>.
 Добавьте в конфигурацию telegraf следующий плагин - <a href="https://github.com/influxdata/telegraf/tree/master/plugins/inputs/docker">docker</a>:</li>
@@ -178,8 +178,8 @@ $ curl http://localhost:9092/kapacitor/v1/ping -v
 <p dir="auto">После настройке перезапустите telegraf, обновите веб интерфейс и приведите скриншотом список <code>measurments</code> в
 веб-интерфейсе базы telegraf.autogen . Там должны появиться метрики, связанные с docker.</p>
 
-- Вроде "донастроил":
-- вставить telegraf
-- вставить docker-compose
-- вставить докер
-- вставить метрики
+Вроде "донастроил":
+- <a href="https://github.com/vitsinv/learning_ansible/blob/master/10_2_M_systems/images/telegraf.JPG">telegraf.conf</a>
+- <a href="https://github.com/vitsinv/learning_ansible/blob/master/10_2_M_systems/images/docker-compose.JPG">docker-compose.yml</a>
+- <a href="https://github.com/vitsinv/learning_ansible/blob/master/10_2_M_systems/images/docker.JPG">Порты пробросились</a>
+- <a href="https://github.com/vitsinv/learning_ansible/blob/master/10_2_M_systems/images/metrics.JPG">Метрики docker отсутствуют</a>
