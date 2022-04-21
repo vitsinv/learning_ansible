@@ -34,7 +34,7 @@
 <li>Issue поставить label: feature</li>
 </ol>
 
-- <a href=files/issue.jpg>скриншот созданного issue</a>
+- <a href="https://github.com/vitsinv/learning_ansible/blob/master/9_6_GitLab/files/issue.JPG">скриншот созданного issue</a>
 - <a href=https://gitlab.com/home_vitsinv/net96/-/issues/1>ссылка на issue</a>
 
 <h3 dir="auto">Developer</h3>
@@ -44,7 +44,7 @@
 <li>Внести изменения по тексту из задания</li>
 <li>Подготовить Merge Requst, влить необходимые изменения в <code>master</code>, проверить, что сборка прошла успешно</li>
 
-- <a href=files/merge.jpg>скриншот merge request</a>
+- <a href="https://github.com/vitsinv/learning_ansible/blob/master/9_6_GitLab/files/merge.JPG">скриншот merge request</a>
 - <a href="https://gitlab.com/home_vitsinv/net96/-/merge_requests/1/diffs?commit_id=abf1963d4cf2ee741e6be3b4aed6419c3bd55bee">ссылка на коммит</a>
 </ol>
 
