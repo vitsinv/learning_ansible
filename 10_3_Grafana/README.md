@@ -146,19 +146,20 @@ groups:
           description: "\n VALUE = {{ $value }}\n LABELS = {{ $labels }}"
 ```
 - скриншоты node_exporter и dashboards
-  - node_exporter
+  - <a href=https://github.com/vitsinv/learning_ansible/blob/master/10_3_Grafana/files/node_exporter.JPG>скриншот метрик</a>
 
-  - Dashboard node_exporter
+  - <a href=https://github.com/vitsinv/learning_ansible/blob/master/10_3_Grafana/files/g_NE_db.JPG>DashBoard Node_Exporter</a>
 
-  - Dashboard windows_exporter
+  - <a href=https://github.com/vitsinv/learning_ansible/blob/master/10_3_Grafana/files/g_WE_db.JPG>Dashboard windows_exporter</a>
+    
 
-  - Dashboard snmp_exporter
+  - <a href=https://github.com/vitsinv/learning_ansible/blob/master/10_3_Grafana/files/g_SE_db.JPG>Dashboard snmp_exporter</a>
 
 <p data-sourcepos="16:1-17:63" dir="auto"><strong>В части задания 3</strong> вы должны самостоятельно завести удобный для вас канал нотификации, например Telegram или Email
 и отправить туда тестовые события.</p>
 <p data-sourcepos="19:1-19:131" dir="auto">В решении приведите скриншоты тестовых событий из каналов нотификаций.</p>
 
-- скриншот чата telegram
+- <a href=https://github.com/vitsinv/learning_ansible/blob/master/10_3_Grafana/files/tg_alerts.JPG>скриншот чата telegram</a>
 
 
 
