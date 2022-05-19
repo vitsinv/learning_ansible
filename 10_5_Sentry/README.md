@@ -16,7 +16,7 @@
 </ul>
 <p dir="auto">Для выполнения задания - пришлите скриншот меню Projects.</p>
 
-- <a href=/files/projects.JPG>Скриншот projects</a>
+- <a href=https://github.com/vitsinv/learning_ansible/blob/master/10_5_Sentry/files/projects.JPG>Скриншот projects</a>
 
 <h2 dir="auto">>Задание 2</h2>
 <p dir="auto">Создайте python проект и нажмите <code>Generate sample event</code> для генерации тестового события.</p>
@@ -24,11 +24,11 @@
 <p dir="auto">Перейдите в список событий проекта, выберите созданное вами и нажмите <code>Resolved</code>.</p>
 <p dir="auto">Для выполнения задание предоставьте скриншот <code>Stack trace</code> из этого события
 
-- <a href=/files/stacktrace.JPG>скриншот stacktrace</a>
+- <a href=https://github.com/vitsinv/learning_ansible/blob/master/10_5_Sentry/files/stacktrace.JPG>скриншот stacktrace</a>
 
  и список событий проекта, после нажатия <code>Resolved</code>.</p>
 
-- <a href=/files/issues.JPG>скриншот списка событий</a> 
+- <a href=https://github.com/vitsinv/learning_ansible/blob/master/10_5_Sentry/files/issues.JPG>скриншот списка событий</a> 
 
 <h2 dir="auto">Задание 3</h2>
 <p dir="auto">Перейдите в создание правил алёртинга.</p>
@@ -41,4 +41,4 @@
 Также проверьте проект в котором вы создаёте событие, возможно алёрт привязан к другому.</p>
 <p dir="auto">Для выполнения задания - пришлите скриншот тела сообщения из оповещения на почте.</p>
 
-- <a href=/files/email.JPG>скриншот письма</a>
+- <a href=https://github.com/vitsinv/learning_ansible/blob/master/10_5_Sentry/files/email.JPG>скриншот письма</a>
