@@ -139,7 +139,7 @@ INFO: ------------------------------------------------------------------------
 ```
 </li>
 <li>Смотрим результат в интерфейсе
-![sonar_interface](/files/sonar_interface.jpg)
+![sonar_interface](files/sonar_interface.jpg)
 </li>
 
 <li>Исправляем ошибки, которые он выявил(включая warnings)</li>
