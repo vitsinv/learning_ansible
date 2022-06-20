@@ -102,6 +102,6 @@ Kustomize Version: v4.5.4
 - проверить работу приложения из задания 2, запустив port-forward до кластера
 ___________
 
-<p dir="auto"><a target="_blank" rel="noopener noreferrer" href="https://github.com/vitsinv/learning_ansible/blob/master/12_1_Intro/files/1.JPG"><img src="https://github.com/vitsinv/learning_ansible/blob/master/12_1_Intro/files/1.JPG" alt="1" style="max-width: 100%;"></a></p>
+<p dir="auto"><a target="_blank" rel="noopener noreferrer" href="https://github.com/vitsinv/learning_ansible/blob/master/12_1_intro/1.JPG"><img src="https://github.com/vitsinv/learning_ansible/blob/master/12_1_intro/1.JPG" alt="1" style="max-width: 100%;"></a></p>
 
 #
